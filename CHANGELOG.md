@@ -18,10 +18,6 @@
 - Finalize the checkout process - payment service \(stripe\) [\#241](https://github.com/wp-graphql/wp-graphql-woocommerce/issues/241)
 - Price RAW format returns null [\#207](https://github.com/wp-graphql/wp-graphql-woocommerce/issues/207)
 
-**Merged pull requests:**
-
-- Updates to the Connection Classes [\#243](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/243) ([renatonascalves](https://github.com/renatonascalves))
-
 ## [list](https://github.com/wp-graphql/wp-graphql-woocommerce/tree/list) (2020-02-20)
 
 [Full Changelog](https://github.com/wp-graphql/wp-graphql-woocommerce/compare/v0.4.4...list)
@@ -44,6 +40,7 @@
 
 **Merged pull requests:**
 
+- Updates to the Connection Classes [\#243](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/243) ([renatonascalves](https://github.com/renatonascalves))
 - Adds Two New Workflows [\#239](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/239) ([kidunot89](https://github.com/kidunot89))
 
 ## [v0.4.3](https://github.com/wp-graphql/wp-graphql-woocommerce/tree/v0.4.3) (2020-02-04)
@@ -146,6 +143,7 @@ Updated tests
 - Shipping Method Queries and Mutators for Cart [\#167](https://github.com/wp-graphql/wp-graphql-woocommerce/issues/167)
 - ShippingZone and ShippingMethodInstance type [\#26](https://github.com/wp-graphql/wp-graphql-woocommerce/issues/26)
 - Release v0.3.2 [\#200](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/200) ([kidunot89](https://github.com/kidunot89))
+- Testing/CI configurations upgrade. [\#173](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/173) ([kidunot89](https://github.com/kidunot89))
 - Cart to CartItem connection enhanced. [\#215](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/215) ([kidunot89](https://github.com/kidunot89))
 - allow optional password creation for registerCustomer [\#214](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/214) ([saleebm](https://github.com/saleebm))
 - Updates some product fields' access levels [\#213](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/213) ([kidunot89](https://github.com/kidunot89))
@@ -217,9 +215,9 @@ Updated tests
 
 - Product post\_type should be set to `show\_in\_graphql` [\#85](https://github.com/wp-graphql/wp-graphql-woocommerce/issues/85)
 - QL Session Handler 2.0 [\#174](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/174) ([kidunot89](https://github.com/kidunot89))
-- Testing/CI configurations upgrade. [\#173](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/173) ([kidunot89](https://github.com/kidunot89))
 - QL Search support added. [\#172](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/172) ([kidunot89](https://github.com/kidunot89))
 - Release v0.3.0 [\#155](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/155) ([kidunot89](https://github.com/kidunot89))
+- Improved ordering for some connections [\#145](https://github.com/wp-graphql/wp-graphql-woocommerce/pull/145) ([kidunot89](https://github.com/kidunot89))
 
 **Fixed:**
 
