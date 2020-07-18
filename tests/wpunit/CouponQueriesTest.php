@@ -7,7 +7,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 	private $coupon;
 	private $helper;
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		$this->shop_manager = $this->factory->user->create( array( 'role' => 'shop_manager' ) );
@@ -22,7 +22,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 		);
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		// your tear down methods here
 		// then
 		parent::tearDown();
@@ -113,7 +113,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Testing "ID" ID type.
 		 */
 		$variables = array(
@@ -135,7 +135,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * Testing "DATABASE_ID" ID type
 		 */
 		$variables = array(
@@ -157,7 +157,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Three
-		 * 
+		 *
 		 * Testing "CODE" ID type.
 		 */
 		$variables = array(
@@ -209,7 +209,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Should return null due to lack of required capabilities
 		 */
 		wp_set_current_user( $this->customer );
@@ -224,7 +224,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * Should return data because user has required capabilities
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -238,7 +238,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Three
-		 * 
+		 *
 		 * Tests 'code' where argument
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -267,7 +267,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Four
-		 * 
+		 *
 		 * Tests 'include' where argument
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -295,7 +295,7 @@ class CouponQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Five
-		 * 
+		 *
 		 * Tests 'exclude' where argument
 		 */
 		wp_set_current_user( $this->shop_manager );

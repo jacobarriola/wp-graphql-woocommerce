@@ -4,7 +4,7 @@ use WPGraphQL\Type\WPEnumType;
 
 class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
-    public function setUp() {
+    public function setUp(): void {
         // before
         parent::setUp();
 
@@ -19,7 +19,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
         $this->variation  = $this->getModule('\Helper\Wpunit')->product_variation();
         $this->cart       = $this->getModule('\Helper\Wpunit')->cart();
         $this->tax        = $this->getModule('\Helper\Wpunit')->tax_rate();
-        
+
         // Turn on tax calculations. Important!
         update_option( 'woocommerce_prices_include_tax', 'no' );
 		update_option( 'woocommerce_calc_taxes', 'yes' );
@@ -42,7 +42,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
         $this->order_id = $this->order->create();
     }
 
-    public function tearDown() {
+    public function tearDown(): void {
         // your tear down methods here
 
         // then
@@ -267,11 +267,11 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                 array(
                     'productId' => $product_ids[0],
                     'quantity'  => 5,
-                    'metaData'  => array( 
-                        array( 
+                    'metaData'  => array(
+                        array(
                             'key'   => 'test_product_key',
                             'value' => 'test product value',
-                        ), 
+                        ),
                     ),
                 ),
                 array(
@@ -299,18 +299,18 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                     'taxClass'  => 'STANDARD',
                 ),
             ),
-			'metaData'           => array( 
-                array( 
+			'metaData'           => array(
+                array(
                     'key'   => 'test_key',
                     'value' => 'test value',
-                ), 
+                ),
             ),
 			'isPaid'             => true,
         );
 
         /**
 		 * Assertion One
-		 * 
+		 *
 		 * User without necessary capabilities cannot create order an order.
 		 */
 		wp_set_current_user( $this->customer );
@@ -323,7 +323,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
         /**
 		 * Assertion Two
-		 * 
+		 *
 		 * Test mutation and input.
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -361,7 +361,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                                             );
                                         },
                                         $order->get_items( 'coupon' )
-                                    ) 
+                                    )
                                 ),
                             ),
                             'feeLines'      => array(
@@ -376,7 +376,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                                                 'taxStatus' => strtoupper( $item->get_tax_status() ),
                                                 'total'     => $item->get_total(),
                                                 'totalTax'  => ! empty( $item->get_total_tax() ) ? $item->get_total_tax() : null,
-                                                'taxClass'  => ! empty( $item->get_tax_class() ) 
+                                                'taxClass'  => ! empty( $item->get_tax_class() )
                                                     ? WPEnumType::get_safe_name( $item->get_tax_class() )
                                                     : 'STANDARD',
                                             );
@@ -389,7 +389,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                                 'nodes' => array_reverse(
                                     array_map(
                                         function( $item ) {
-        
+
                                             return array(
                                                 'itemId'         => $item->get_id(),
                                                 'orderId'        => $item->get_order_id(),
@@ -511,11 +511,11 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                 array(
                     'productId' => $product_ids[0],
                     'quantity'  => 5,
-                    'metaData'  => array( 
-                        array( 
+                    'metaData'  => array(
+                        array(
                             'key'   => 'test_product_key',
                             'value' => 'test product value',
-                        ), 
+                        ),
                     ),
                 ),
                 array(
@@ -543,11 +543,11 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                     'taxClass'  => 'STANDARD',
                 ),
             ),
-			'metaData'           => array( 
-                array( 
+			'metaData'           => array(
+                array(
                     'key'   => 'test_key',
                     'value' => 'test value',
-                ), 
+                ),
             ),
 			'isPaid'             => false,
         );
@@ -584,11 +584,11 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
                     'id'       => array_keys( $line_items )[0],
                     'quantity' => 6,
-                    'metaData' => array( 
-                        array( 
+                    'metaData' => array(
+                        array(
                             'key'   => 'test_product_key',
                             'value' => 'updated test product value',
-                        ), 
+                        ),
                     ),
                 ),
                 array(
@@ -617,18 +617,18 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                     'taxClass'  => 'STANDARD',
                 ),
             ),
-			'metaData'           => array( 
-                array( 
+			'metaData'           => array(
+                array(
                     'key'   => 'test_key',
                     'value' => 'new test value',
-                ), 
+                ),
             ),
 			'isPaid'             => true,
         );
 
         /**
 		 * Assertion One
-		 * 
+		 *
 		 * User without necessary capabilities cannot update order an order.
 		 */
         wp_set_current_user( $this->customer );
@@ -645,7 +645,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
         /**
 		 * Assertion Two
-		 * 
+		 *
 		 * Test mutation and input.
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -684,7 +684,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                                             );
                                         },
                                         $order->get_items( 'coupon' )
-                                    ) 
+                                    )
                                 ),
                             ),
                             'feeLines'      => array(
@@ -699,7 +699,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                                                 'taxStatus' => strtoupper( $item->get_tax_status() ),
                                                 'total'     => $item->get_total(),
                                                 'totalTax'  => ! empty( $item->get_total_tax() ) ? $item->get_total_tax() : null,
-                                                'taxClass'  => ! empty( $item->get_tax_class() ) 
+                                                'taxClass'  => ! empty( $item->get_tax_class() )
                                                     ? WPEnumType::get_safe_name( $item->get_tax_class() )
                                                     : 'STANDARD',
                                             );
@@ -712,7 +712,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                                 'nodes' => array_reverse(
                                     array_map(
                                         function( $item ) {
-        
+
                                             return array(
                                                 'itemId'         => $item->get_id(),
                                                 'orderId'        => $item->get_order_id(),
@@ -835,11 +835,11 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                 array(
                     'productId' => $product_ids[0],
                     'quantity'  => 5,
-                    'metaData'  => array( 
-                        array( 
+                    'metaData'  => array(
+                        array(
                             'key'   => 'test_product_key',
                             'value' => 'test product value',
-                        ), 
+                        ),
                     ),
                 ),
                 array(
@@ -867,11 +867,11 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                     'taxClass'  => 'STANDARD',
                 ),
             ),
-			'metaData'           => array( 
-                array( 
+			'metaData'           => array(
+                array(
                     'key'   => 'test_key',
                     'value' => 'test value',
-                ), 
+                ),
             ),
 			'isPaid'             => false,
         );
@@ -904,7 +904,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
         /**
 		 * Assertion One
-		 * 
+		 *
 		 * User without necessary capabilities cannot delete order an order.
 		 */
         wp_set_current_user( $this->customer );
@@ -921,7 +921,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
         /**
 		 * Assertion Two
-		 * 
+		 *
 		 * Test mutation and input.
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -933,7 +933,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
         // use --debug flag to view.
         codecept_debug( $actual );
-        
+
         $this->assertArrayHasKey( 'data', $actual );
         $this->assertArrayHasKey( 'deleteOrder', $actual['data'] );
         $this->assertEquals( $initial_response['data']['createOrder'], $actual['data']['deleteOrder'] );
@@ -986,11 +986,11 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                 array(
                     'productId' => $product_ids[0],
                     'quantity'  => 5,
-                    'metaData'  => array( 
-                        array( 
+                    'metaData'  => array(
+                        array(
                             'key'   => 'test_product_key',
                             'value' => 'test product value',
-                        ), 
+                        ),
                     ),
                 ),
                 array(
@@ -1018,11 +1018,11 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
                     'taxClass'  => 'STANDARD',
                 ),
             ),
-			'metaData'           => array( 
-                array( 
+			'metaData'           => array(
+                array(
                     'key'   => 'test_key',
                     'value' => 'test value',
-                ), 
+                ),
             ),
 			'isPaid'             => false,
         );
@@ -1058,7 +1058,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
         /**
 		 * Assertion One
-		 * 
+		 *
 		 * User without necessary capabilities cannot delete order an order.
 		 */
         wp_set_current_user( $this->customer );
@@ -1075,7 +1075,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
         /**
 		 * Assertion Two
-		 * 
+		 *
 		 * Test mutation and input.
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -1087,7 +1087,7 @@ class OrderMutationsTest extends \Codeception\TestCase\WPTestCase {
 
         // use --debug flag to view.
         codecept_debug( $actual );
-        
+
         $this->assertArrayHasKey( 'data', $actual );
         $this->assertArrayHasKey( 'deleteOrderItems', $actual['data'] );
         $this->assertEquals( $initial_response['data']['createOrder'], $actual['data']['deleteOrderItems'] );

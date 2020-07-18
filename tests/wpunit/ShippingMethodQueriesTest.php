@@ -8,7 +8,7 @@ class ShippingMethodQueriesTest extends \Codeception\TestCase\WPTestCase {
 	private $method;
 	private $helper;
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		$this->shop_manager = $this->factory->user->create( array( 'role' => 'shop_manager' ) );
@@ -17,7 +17,7 @@ class ShippingMethodQueriesTest extends \Codeception\TestCase\WPTestCase {
 		$this->method       = 'flat_rate';
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		// your tear down methods here
 		// then
 		parent::tearDown();
@@ -40,7 +40,7 @@ class ShippingMethodQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * test "ID" ID type.
 		 */
 		$variables = array(
@@ -62,7 +62,7 @@ class ShippingMethodQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * test "DATABASE_ID" ID type.
 		 */
 		$variables = array(
@@ -86,7 +86,7 @@ class ShippingMethodQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 	public function testShippingMethodsQuery() {
 		$wc_shipping = WC_Shipping::instance();
-		$methods = array_values( 
+		$methods = array_values(
 			array_map(
 				function( $method ) {
 					return array( 'id' => Relay::toGlobalId( 'shipping_method', $method->id ) );
@@ -107,7 +107,7 @@ class ShippingMethodQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * tests query
 		 */
 		$actual = do_graphql_request( $query, 'shippingMethodQuery' );

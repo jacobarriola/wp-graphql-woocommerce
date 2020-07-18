@@ -3,7 +3,7 @@
 class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 {
 
-    public function setUp() {
+    public function setUp(): void {
         // before
         parent::setUp();
 
@@ -16,7 +16,7 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
         $this->customer  = $this->customers->create();
     }
 
-    public function tearDown() {
+    public function tearDown(): void {
         // your tear down methods here
 
         // then
@@ -53,7 +53,7 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 
         // Force download permission updated.
         wc_downloadable_product_permissions( $order_id, true );
-        
+
         $query = '
             query {
                 customer {
@@ -82,7 +82,7 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 
         /**
 		 * Assertion One
-		 * 
+		 *
 		 * tests query results
 		 */
 		$this->set_user( $this->customer );
@@ -107,7 +107,7 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 		$this->assertEquals( $expected, $actual );
     }
 
-    
+
     public function testOrderToDownloadableItemsQueryArgs() {
         $valid_product        = $this->products->create_simple(
             array(
@@ -177,7 +177,7 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 
         /**
 		 * Assertion One
-		 * 
+		 *
 		 * tests "active" whereArg
 		 */
 		$this->set_user( $this->customer );
@@ -212,10 +212,10 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 		codecept_debug( $actual );
 
         $this->assertEquals( $expected, $actual );
-        
+
         /**
 		 * Assertion Two
-		 * 
+		 *
 		 * tests "active" whereArg reversed
 		 */
         $actual   = graphql(
@@ -249,10 +249,10 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 		codecept_debug( $actual );
 
         $this->assertEquals( $expected, $actual );
-        
+
         /**
 		 * Assertion Three
-		 * 
+		 *
 		 * tests "hasDownloadsRemaining" whereArg
 		 */
 		$actual   = graphql(
@@ -286,10 +286,10 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 		codecept_debug( $actual );
 
         $this->assertEquals( $expected, $actual );
-        
+
         /**
 		 * Assertion Four
-		 * 
+		 *
 		 * tests "hasDownloadsRemaining" whereArg reversed
 		 */
         $actual   = graphql(
@@ -349,7 +349,7 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 
         // Force download permission updated.
         wc_downloadable_product_permissions( $order_id, true );
-        
+
         $query = '
             query {
                 customer {
@@ -374,7 +374,7 @@ class DownloadableItemQueriesTest extends \Codeception\TestCase\WPTestCase
 
         /**
 		 * Assertion One
-		 * 
+		 *
 		 * tests query results
 		 */
 		$this->set_user( $this->customer );

@@ -1,13 +1,13 @@
 <?php
 
 class CustomerMutationsTest extends \Codeception\TestCase\WPTestCase {
-	public function setUp() {
+	public function setUp(): void {
 		// before
 		parent::setUp();
 
 		update_option( 'users_can_register', 1 );
 		$this->helper = $this->getModule('\Helper\Wpunit')->customer();
-		
+
 		// Register Info
 		$this->first_name = 'Peter';
 		$this->last_name  = 'Parker';
@@ -62,7 +62,7 @@ class CustomerMutationsTest extends \Codeception\TestCase\WPTestCase {
 		);
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		// your tear down methods here
 
 		// then
@@ -205,7 +205,7 @@ class CustomerMutationsTest extends \Codeception\TestCase\WPTestCase {
 	public function testRegisterMutationWithoutCustomerInfo() {
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Tests mutation without a providing WooCommerce specific customer information.
 		 */
 		$actual = $this->registerCustomer(
@@ -253,7 +253,7 @@ class CustomerMutationsTest extends \Codeception\TestCase\WPTestCase {
 	public function testRegisterMutationWithBillingInfo() {
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Tests mutation with customer billing information.
 		 */
 		$actual = $this->registerCustomer(
@@ -302,7 +302,7 @@ class CustomerMutationsTest extends \Codeception\TestCase\WPTestCase {
 	public function testRegisterMutationWithShippingSameAsBillingInfo() {
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Tests mutation using "shippingSameAsBilling" field.
 		 */
 		$actual = $this->registerCustomer(
@@ -355,7 +355,7 @@ class CustomerMutationsTest extends \Codeception\TestCase\WPTestCase {
 	public function testRegisterMutationWithBillingAndShippingInfo() {
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Tests mutation with customer shipping information.
 		 */
 		$actual = $this->registerCustomer(
@@ -405,7 +405,7 @@ class CustomerMutationsTest extends \Codeception\TestCase\WPTestCase {
 	public function testUpdateMutation() {
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Tests mutation without a providing WooCommerce specific customer information.
 		 */
 		$this->registerCustomer(
@@ -464,7 +464,7 @@ class CustomerMutationsTest extends \Codeception\TestCase\WPTestCase {
 	public function testUpdateMutationWithShippingSameAsBilling() {
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Tests mutation without a providing WooCommerce specific customer information.
 		 */
 		$this->registerCustomer(

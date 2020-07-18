@@ -9,7 +9,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 	private $order;
 	private $refund;
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		$this->shop_manager    = $this->factory->user->create( array( 'role' => 'shop_manager' ) );
@@ -23,7 +23,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 		$this->refund          = $this->refund_helper->create( $this->order );
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		// your tear down methods here
 		// then
 		parent::tearDown();
@@ -50,7 +50,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Test query and failed results for users lacking required caps
 		 */
 		wp_set_current_user( $this->customer );
@@ -77,7 +77,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * Test query and results for users with required caps
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -113,7 +113,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Test query and "id" argument
 		 */
 		wp_set_current_user( $this->customer );
@@ -136,7 +136,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * Test query and "refundId" argument
 		 */
 		$variables = array(
@@ -180,7 +180,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * Test query and failed results for users lacking required caps
 		 */
 		wp_set_current_user( $this->customer );
@@ -194,7 +194,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * Test query and results for users with required caps
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -214,7 +214,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Three
-		 * 
+		 *
 		 * Test "statuses" where argument results should be empty
 		 * Note: This argument is functionally useless Refunds' "post_status" is always set to "completed".
 		 */
@@ -248,7 +248,7 @@ class RefundQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Four
-		 * 
+		 *
 		 * Test "orderIn" where argument
 		 */
 		$variables = array( 'orderIn' => array( $this->order ) );

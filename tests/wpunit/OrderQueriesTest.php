@@ -10,7 +10,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 	private $product_helper;
 	private $customer_helper;
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		$this->shop_manager    = $this->factory->user->create( array( 'role' => 'shop_manager' ) );
@@ -21,7 +21,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 		$this->order           = $this->order_helper->create();
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		// your tear down methods here
 		// then
 		parent::tearDown();
@@ -118,10 +118,10 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 				}
 			}
 		';
-		
+
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * tests query as customer, should return "null" because the customer isn't authorized.
 		 */
 		wp_set_current_user( $this->customer );
@@ -139,7 +139,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * tests query as shop manager
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -169,7 +169,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * tests "ID" ID type.
 		 */
 		$variables = array(
@@ -191,7 +191,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * tests "DATABASE_ID" ID type.
 		 */
 		$variables = array(
@@ -213,7 +213,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Three
-		 * 
+		 *
 		 * tests "ORDER_NUMBER" ID type
 		 */
 		$variables = array(
@@ -284,7 +284,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * tests query with no without required capabilities
 		 */
 		wp_set_current_user( $this->customer );
@@ -298,7 +298,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * tests query with required capabilities
 		 */
 		wp_set_current_user( $this->shop_manager );
@@ -318,7 +318,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Three
-		 * 
+		 *
 		 * tests "statuses" where argument
 		 */
 		$variables = array( 'statuses' => array( 'COMPLETED' ) );
@@ -346,7 +346,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Four
-		 * 
+		 *
 		 * tests "customerId" where argument
 		 */
 		$variables = array( 'customerId' => $customer );
@@ -374,7 +374,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Five
-		 * 
+		 *
 		 * tests "customerIn" where argument
 		 */
 		$variables = array( 'customersIn' => array( $customer ) );
@@ -402,7 +402,7 @@ class OrderQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Six
-		 * 
+		 *
 		 * tests "productId" where argument
 		 */
 		$variables = array( 'productId' => $product );

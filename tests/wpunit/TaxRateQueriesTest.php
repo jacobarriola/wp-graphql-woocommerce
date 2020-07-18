@@ -8,7 +8,7 @@ class TaxRateQueriesTest extends \Codeception\TestCase\WPTestCase {
 	private $rate;
 	private $helper;
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		$this->shop_manager = $this->factory->user->create( array( 'role' => 'shop_manager' ) );
@@ -17,7 +17,7 @@ class TaxRateQueriesTest extends \Codeception\TestCase\WPTestCase {
 		$this->rate         = $this->helper->create();
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		// your tear down methods here
 		// then
 		parent::tearDown();
@@ -49,7 +49,7 @@ class TaxRateQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * tests query, "id" query arg, and results
 		 */
 		$variables = array( 'id' => $id );
@@ -63,7 +63,7 @@ class TaxRateQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * tests query, "rateId" query arg, and results
 		 */
 		$variables = array( 'rateId' => $this->rate );
@@ -121,7 +121,7 @@ class TaxRateQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion One
-		 * 
+		 *
 		 * tests query
 		 */
 		$actual   = graphql( array( 'query' => $query ) );
@@ -145,7 +145,7 @@ class TaxRateQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Two
-		 * 
+		 *
 		 * tests "class" where arg
 		 */
 		$variables = array( 'class' => 'REDUCED_RATE' );
@@ -183,7 +183,7 @@ class TaxRateQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Three
-		 * 
+		 *
 		 * tests "postCode" where arg
 		 */
 		$variables = array( 'postCode' => '23451' );
@@ -213,7 +213,7 @@ class TaxRateQueriesTest extends \Codeception\TestCase\WPTestCase {
 
 		/**
 		 * Assertion Four
-		 * 
+		 *
 		 * tests "postCodeIn" where arg
 		 */
 		$variables = array( 'postCodeIn' => array( '123456', '23451' ) );
