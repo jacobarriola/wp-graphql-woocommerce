@@ -49,7 +49,7 @@
             "tests/_data/config.php"
         ],
         "psr-4": {
-          "WPGraphQL\\Testing\\": "tests/"
+          "Tests\\WPGraphQL\\": "tests/_support/"
         }
     },
     "scripts": {
