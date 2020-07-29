@@ -17,11 +17,6 @@ run_tests() {
     done
 }
 
-# Exits with a status of 0 (true) if provided version number is higher than proceeding numbers.
-version_gt() {
-    test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1";
-}
-
 write_htaccess() {
     echo "<IfModule mod_rewrite.c>
 RewriteEngine On
@@ -70,7 +65,7 @@ fi
 COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-source --no-interaction
 
 # Install pcov/clobber if PHP7.1+
-if version_gt $PHP_VERSION 7.0 && [[ -n "$COVERAGE" ]] && [[ -z "$USING_XDEBUG" ]]; then
+if [[ -n "$COVERAGE" ]] && [[ -n "$USING_PCOV" ]]; then
     echo "Installing pcov/clobber"
     COMPOSER_MEMORY_LIMIT=-1 composer require --dev pcov/clobber
     vendor/bin/pcov clobber
@@ -98,7 +93,7 @@ if [ -f "${TESTS_OUTPUT}/coverage.xml" ] && [[ -n "$COVERAGE" ]]; then
     sed -i "s~$pattern~~g" "$TESTS_OUTPUT"/coverage.xml
 
     # Remove pcov/clobber
-    if version_gt $PHP_VERSION 7.0 && [[ -z "$SKIP_TESTS_CLEANUP" ]] && [[ -z "$USING_XDEBUG" ]]; then
+    if [[ -z "$SKIP_TESTS_CLEANUP" ]] && [[ -n "$USING_PCOV" ]]; then
         echo 'Removing pcov/clobber.'
         vendor/bin/pcov unclobber
         COMPOSER_MEMORY_LIMIT=-1 composer remove --dev pcov/clobber
@@ -128,7 +123,7 @@ fi
 if [ -f "${TESTS_OUTPUT}/failed" ]; then
     echo "Uh oh, some went wrong."
     exit 1
-else 
+else
     echo "Woohoo! It's working!"
     exit 0
 fi

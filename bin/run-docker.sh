@@ -20,10 +20,10 @@ case "$subcommand" in
                     --build-arg WP_VERSION=${WP_VERSION-5.4} \
                     --build-arg PHP_VERSION=${PHP_VERSION-7.4} \
                     .
-                
+
                 docker build -f docker/testing.Dockerfile \
                     -t woographql-testing:latest \
-                    --build-arg USE_XDEBUG=${USE_XDEBUG-} \
+                    --build-arg USE_PCOV=${USE_PCOV-} \
                     .
                     ;;
                 \? ) echo "Usage: $0 build [-a|-t]";;
