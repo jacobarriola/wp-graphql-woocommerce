@@ -364,16 +364,16 @@ class Product extends Crud_CPT {
 					return ! is_null( $this->data->is_sold_individually() ) ? $this->data->is_sold_individually() : null;
 				};
 				$shared_fields['weight']            = function() {
-					return ! is_null( $this->data->get_weight() ) ? $this->data->get_weight() : null;
+					return ! empty( $this->data->get_weight() ) ? $this->data->get_weight() : null;
 				};
 				$shared_fields['length']            = function() {
-					return ! is_null( $this->data->get_length() ) ? $this->data->get_length() : null;
+					return ! empty( $this->data->get_length() ) ? $this->data->get_length() : null;
 				};
 				$shared_fields['width']             = function() {
-					return ! is_null( $this->data->get_width() ) ? $this->data->get_width() : null;
+					return ! empty( $this->data->get_width() ) ? $this->data->get_width() : null;
 				};
 				$shared_fields['height']            = function() {
-					return ! is_null( $this->data->get_height() ) ? $this->data->get_height() : null;
+					return ! empty( $this->data->get_height() ) ? $this->data->get_height() : null;
 				};
 				$shared_fields['shippingClassId']   = function () {
 					return ! empty( $this->data->get_image_id() ) ? $this->data->get_shipping_class_id() : null;

@@ -25,7 +25,6 @@
         "firebase/php-jwt": "^5.0"
     },
     "require-dev": {
-        "lucatume/wp-browser": "^2.6.5",
         "codeception/module-asserts": "^1.0",
         "codeception/module-phpbrowser": "^1.0",
         "codeception/module-webdriver": "^1.0",
@@ -33,9 +32,11 @@
         "codeception/module-filesystem": "^1.0",
         "codeception/module-cli": "^1.0",
         "codeception/util-universalframework": "^1.0",
+        "codeception/module-rest": "^1.2",
+        "lucatume/wp-browser": "^2.6",
         "simpod/php-coveralls-mirror": "^3.0",
         "stripe/stripe-php": "^7.28",
-        "codeception/module-rest": "^1.2"
+        "wp-graphql/wp-graphql-testcase": "^1.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -58,7 +59,7 @@
             "tests/_data/config.php"
         ],
         "psr-4": {
-          "Tests\\WPGraphQL\\": "tests/_support/"
+          "Tests\\WPGraphQL\\WooCommerce\\": "tests/_support/"
         }
     },
     "scripts": {
