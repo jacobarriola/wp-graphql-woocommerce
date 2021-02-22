@@ -234,6 +234,7 @@ class Product_Variation_Type {
 						'resolve'     => function( $source, array $args, AppContext $context ) {
 							// @codingStandardsIgnoreLine
 							return DataSource::resolve_post_object( $source->image_id, $context );
+							return ! empty( $source->image_id ) ? DataSource::resolve_post_object( $source->image_id, $context ) : null;
 						},
 					),
 				),
